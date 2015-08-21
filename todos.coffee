@@ -15,7 +15,6 @@ if Meteor.isClient
   Meteor.subscribe 'tasks'
 
 
-
   Template.body.helpers
     tasks: ->
       if Session.get('hideCompleted')
@@ -28,7 +27,6 @@ if Meteor.isClient
 
     incompleteCount: ->
       Tasks.find({ checked: { $ne: true }}).count()
-
 
 
   Template.body.events
@@ -47,7 +45,6 @@ if Meteor.isClient
       Session.set('hideCompleted', event.target.checked)
 
 
-
   Template.task.events
     'click .toggle-checked': ->
       Meteor.call('setChecked', this._id, not this.checked)
@@ -57,7 +54,6 @@ if Meteor.isClient
 
     'click .toggle-private': ->
       Meteor.call('setPrivate', this._id, not this.private)
-
 
 
   Template.task.helpers
@@ -72,7 +68,6 @@ if Meteor.isClient
 
     Accounts.ui.config
       passwordSignupFields: 'USERNAME_ONLY'
-
 
 
 Meteor.methods
